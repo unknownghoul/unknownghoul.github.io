@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigator | unknownghoul</title>
+    <!-- We're using a gritty, modern font for the theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #0d0d0d; /* Very dark background */
+            color: #e5e7eb; /* Light gray text for contrast */
+            position: relative;
+            overflow-x: hidden;
+            transition: background-color 2s ease-in-out;
+        }
+        
+        /* The dynamic canvas will replace the old static glitch effect */
+        #dynamic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .ghoul-red {
+            color: #d83d3d; /* A subtle red for accents */
+        }
+        
+        /* Typewriter effect for the title */
+        .typewriter-text {
+            overflow: hidden; /* Ensures the content is not shown until the animation is complete */
+            white-space: nowrap; /* Keeps the text on a single line */
+            animation: typing 2s steps(40, end) forwards;
+            width: 0;
+            display: inline-block;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Glitch effect on hover for project descriptions */
+        .glitch-text {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Text flicker for headings */
+        .text-flicker {
+            animation: text-flicker-anim 2s infinite alternate;
+        }
+
+        @keyframes text-flicker-anim {
+            0%, 100% {
+                text-shadow: none;
+                opacity: 1;
+            }
+            50% {
+                text-shadow: 0 0 5px rgba(216, 61, 61, 0.5), 0 0 10px rgba(216, 61, 61, 0.3);
+                opacity: 0.9;
+            }
+        }
+
+        /* Dimming effect for sections */
+        .dim-container.is-dimmed > section:not(.active-element) {
+            opacity: 0.4;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        /* Ensure active element is on top and at full opacity */
+        .active-element {
+            opacity: 1 !important;
+            z-index: 10;
+        }
+
+        /* CSS for the animated dropdown menu */
+        #dropdown-menu {
+            /* Start with a max-height of 0 and hidden overflow to make it invisible */
+            max-height: 0;
+            overflow: hidden;
+            /* Add a smooth transition for the max-height property */
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        #dropdown-menu.dropdown-open {
+            /* When the menu is open, set a large max-height to reveal the content */
+            max-height: 200px; /* Adjust this value as needed based on content */
+            /* Add the border only when the menu is open */
+            border: 2px solid #d83d3d;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- The new dynamic background canvas -->
+    <canvas id="dynamic-bg"></canvas>
+
+    <!-- Header Section - Like a CCG data file header -->
+    <header class="bg-[#1a1a1a] shadow-md mx-2 md:mx-4 lg:mx-auto lg:max-w-4xl mt-2 mb-8">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+            <!-- The ID `name-link` is for the new glitch effect -->
+            <a href="#" id="name-link" class="text-2xl font-bold ghoul-red tracking-wider">CCG File: <span id="ghoul-name" class="text-white">UNKNOWNGHOUL</span></a>
+
+            <!-- Dropdown Menu Container -->
+            <div class="relative">
+                <!-- Dropdown Toggle Button -->
+                <button id="dropdown-toggle" class="text-white text-xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- The dropdown menu itself -->
+                <div id="dropdown-menu" class="absolute right-0 mt-2 w-48 bg-[#1a1a1a] rounded-md shadow-lg z-20">
+                    <a href="#about" class="block px-4 py-2 text-sm text-gray-400 hover:bg-[#333] hover:text-white">Bio.</a>
+                    <a href="#projects" class="block px-4 py-2 text-sm text-gray-400 hover:bg-[#333] hover:text-white">Case Files</a>
+                    <a href="#contact" class="block px-4 py-2 text-sm text-gray-400 hover:bg-[#333] hover:text-white">Transmit</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 lg:px-0 lg:max-w-4xl dim-container">
+
+        <!-- About Section - Investigator Profile -->
+        <section id="about" class="bg-[#1a1a1a] p-8 md:p-12 rounded-lg shadow-md mb-8 border-2 border-[#d83d3d] transition-transform transform hover:scale-[1.025] duration-300 interactive-item">
+            <h2 class="text-2xl font-bold ghoul-red mb-4 text-center md:text-left typewriter-text text-flicker">INVESTIGATOR PROFILE</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-6 md:mb-0 md:mr-8 flex justify-center relative group">
+                    <!-- Pop-up message on hover -->
+                    <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 text-xs text-white bg-gray-800 px-2 py-1 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap z-10">
+                        Click for bio.site
+                    </span>
+                    <a href="https://bio.site/unknowghoul" target="_blank" class="transition-transform transform hover:scale-110 hover:-translate-y-1 duration-300">
+                        <img src="https://media.bio.site/sites/a2844b7e-dfb2-4e2c-afac-a88c25962c4e/57FWunykMyLBnfL8xmKWQT.jpg" alt="Profile Picture" class="rounded-lg shadow-lg border-2 border-gray-600">
+                    </a>
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <!-- Added ID and data attribute for the glitch effect -->
+                    <h3 id="subject-heading" class="text-xl font-bold mb-2 text-flicker">Subject: <span id="subject-name" data-original-text="unknownghoul">unknownghoul</span></h3>
+                    <!-- Bio text no longer has the decryption effect on hover -->
+                    <p id="bio-text" class="text-gray-400 leading-relaxed">
+                        Bio-site has been flagged for analysis. The individual operates in the digital realm, showing expertise in system architecture and data manipulation. This file documents observed projects and contact protocols. Further investigation is required.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section - Case Files -->
+        <section id="projects" class="mb-8 interactive-item">
+            <h2 class="text-2xl font-bold ghoul-red text-center mb-6 text-flicker">CONFIDENTIAL CASE FILES</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Case File 1 -->
+                <div class="bg-[#1a1a1a] rounded-lg shadow-md p-6 border-2 border-[#d83d3d] transition-transform transform hover:scale-105 duration-300">
+                    <h3 class="text-xl font-semibold mb-2 text-flicker">Case #1: Trusted Reviewer List</h3>
+                    <p class="text-gray-400 mb-4 text-sm glitch-text" data-original-text="A vetted list of tech reviewers.">A vetted list of tech reviewers.</p>
+                    <a href="https://docs.google.com/document/d/1XyXyXyXyXyXyXyXyXyXyXyXyXyXyXy/edit" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
+                </div>
+
+                <!-- Case File 2 -->
+                <div class="bg-[#1a1a1a] rounded-lg shadow-md p-6 border-2 border-[#d83d3d] transition-transform transform hover:scale-105 duration-300">
+                    <h3 class="text-xl font-semibold mb-2 text-flicker">Case #2: Chinesium Keyboards</h3>
+                    <p class="text-gray-400 mb-4 text-sm glitch-text" data-original-text="Analysis of low-cost mechanical keyboards.">Analysis of low-cost mechanical keyboards.</p>
+                    <a href="https://docs.google.com/document/d/2ZyZyZyZyZyZyZyZyZyZyZyZyZyZyZ/edit" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
+                </div>
+
+                <!-- Case File 3 -->
+                <div class="bg-[#1a1a1a] rounded-lg shadow-md p-6 border-2 border-[#d83d3d] transition-transform transform hover:scale-105 duration-300">
+                    <h3 class="text-xl font-semibold mb-2 text-flicker">Case #3: why glorious baddd</h3>
+                    <p class="text-gray-400 mb-4 text-sm glitch-text" data-original-text="An analysis of Glorious peripheral flaws.">An analysis of Glorious peripheral flaws.</p>
+                    <a href="https://docs.google.com/document/d/3WyWyWyWyWyWyWyWyWyWyWyWyWyWyWyW/edit" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section - Communication Terminal -->
+        <section id="contact" class="bg-[#1a1a1a] p-8 md:p-12 rounded-lg shadow-md mb-8 border-2 border-[#d83d3d] interactive-item">
+            <h2 class="text-2xl font-bold ghoul-red text-center mb-6 text-flicker">SECURE COMMUNICATION TERMINAL</h2>
+            <div class="max-w-xl mx-auto">
+                <p class="text-gray-400 text-center mb-6">
+                    Establish contact with Investigator unknownghoul for classified information or assignment requests.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="http://discordapp.com/users/714113214257823779" target="_blank" class="bg-ghoul-red text-white font-bold py-2 px-6 rounded-md hover:bg-[#a62c2c] transition-colors duration-300 shadow-lg border-2 border-gray-600">
+                        <i class="fab fa-discord mr-2"></i> Discord &rarr;
+                    </a>
+                    <a href="https://discord.gg/Z4gR69YGTr" target="_blank" class="bg-gray-600 text-white font-bold py-2 px-6 rounded-md hover:bg-gray-700 transition-colors duration-300 shadow-lg border-2 border-gray-600">
+                        <i class="fas fa-users-cog mr-2"></i> Join Unit &rarr;
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section - Data Log -->
+    <footer class="bg-[#1a1a1a] text-center py-6 mt-8 rounded-t-lg mx-2 md:mx-4 lg:mx-auto lg:max-w-4xl shadow-md border-t-2 border-ghoul-red">
+        <p class="text-gray-500 text-sm text-flicker">
+            <i class="fas fa-biohazard ghoul-red mr-2"></i>
+            <span class="text-gray-500">&copy; <span id="year"></span> CCG Intel-Division. Unauthorized Access Prohibited.</span>
+        </p>
+        <div class="flex justify-center mt-2 space-x-4">
+            <a href="https://github.com/unknownghoul" target="_blank" class="text-gray-500 hover:text-white transition-colors duration-300">
+                <i class="fab fa-github mr-2"></i>Field Data Log
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Set the current year in the footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // JavaScript for the interactive effects
+        const chars = '!@#$%^&*()_+{}|:"<>?`~[]\;,./-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        
+        // New JavaScript for the dimming effect
+        const dimContainer = document.querySelector('.dim-container');
+        const interactiveItems = document.querySelectorAll('.interactive-item');
+
+        interactiveItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                dimContainer.classList.add('is-dimmed');
+                item.classList.add('active-element');
+            });
+            item.addEventListener('mouseleave', () => {
+                dimContainer.classList.remove('is-dimmed');
+                item.classList.remove('active-element');
+            });
+        });
+
+        // New JavaScript for the dynamic canvas background
+        const canvas = document.getElementById('dynamic-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        const numParticles = 100;
+        let particles = [];
+        const connectionDistance = 100;
+        const speed = 0.5;
+
+        // Class for the glowing particles
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * speed;
+                this.vy = (Math.random() - 0.5) * speed;
+                this.size = Math.random() * 2 + 1;
+                this.opacity = Math.random();
+                // We add the color property here to fix the TypeError
+                this.color = (Math.random() < 0.1) ? 'd83d3d' : 'e5e7eb'; // 10% chance to be red
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x > width || this.x < 0 || this.y > height || this.y < 0) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(${parseInt(this.color.slice(0, 2), 16)}, ${parseInt(this.color.slice(2, 4), 16)}, ${parseInt(this.color.slice(4, 6), 16)}, ${this.opacity})`;
+                ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+        }
+
+        // Initialize particles
+        function init() {
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        // Draw connecting lines between nearby particles
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p1 = particles[i];
+                    const p2 = particles[j];
+                    const distance = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+
+                    if (distance < connectionDistance) {
+                        const opacity = (1 - distance / connectionDistance) * 0.5;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(229, 231, 235, ${opacity})`;
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            drawConnections();
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Handle canvas resizing
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            init();
+        }
+
+        window.onload = function () {
+            resizeCanvas();
+            animate();
+        };
+
+        window.addEventListener('resize', resizeCanvas);
+
+
+        // --- Glitch and Decryption Functions ---
+        const ghoulNameSpan = document.getElementById('ghoul-name');
+        const nameLink = document.getElementById('name-link');
+        const subjectNameSpan = document.getElementById('subject-name');
+        const subjectHeading = document.getElementById('subject-heading');
+        const bioTextElement = document.getElementById('bio-text');
+        
+        // Object to hold our intervals so we can manage them
+        let intervals = {
+            name: null,
+            subject: null
+        };
+
+        function startGlitch(element, textToGlitch, intervalKey) {
+            // Clear any existing interval to prevent overlapping
+            if (intervals[intervalKey]) {
+                clearInterval(intervals[intervalKey]);
+            }
+            
+            // Start the new glitching interval
+            intervals[intervalKey] = setInterval(() => {
+                let scrambledText = '';
+                for (let i = 0; i < textToGlitch.length; i++) {
+                    scrambledText += chars[Math.floor(Math.random() * chars.length)];
+                }
+                element.textContent = scrambledText;
+            }, 50);
+        }
+
+        function stopGlitchAndUnscramble(element, originalText, intervalKey) {
+            // Clear the glitch interval
+            if (intervals[intervalKey]) {
+                clearInterval(intervals[intervalKey]);
+                intervals[intervalKey] = null;
+            }
+            
+            // Start the unscrambling animation
+            let i = 0;
+            let unscrambleInterval = setInterval(() => {
+                if (i <= originalText.length) {
+                    element.textContent = originalText.substring(0, i) + element.textContent.substring(i);
+                    i++;
+                } else {
+                    // Animation complete, clear this interval
+                    clearInterval(unscrambleInterval);
+                }
+            }, 30);
+        }
+
+        // --- Event Listeners for Name and Subject Glitches ---
+        nameLink.addEventListener('mouseenter', () => {
+            startGlitch(ghoulNameSpan, 'UNKNOWNGHOUL', 'name');
+        });
+        nameLink.addEventListener('mouseleave', () => {
+            stopGlitchAndUnscramble(ghoulNameSpan, 'UNKNOWNGHOUL', 'name');
+        });
+
+        subjectHeading.addEventListener('mouseenter', () => {
+            startGlitch(subjectNameSpan, subjectNameSpan.dataset.originalText, 'subject');
+        });
+        subjectHeading.addEventListener('mouseleave', () => {
+            stopGlitchAndUnscramble(subjectNameSpan, subjectNameSpan.dataset.originalText, 'subject');
+        });
+
+        // --- Project card text decryption is now a character-by-character reveal
+        const allProjectCards = document.querySelectorAll('#projects .glitch-text');
+        
+        allProjectCards.forEach(card => {
+            const originalText = card.dataset.originalText;
+            let currentInterval = null;
+            let i = 0; // Index for the decryption animation
+
+            card.addEventListener('mouseenter', () => {
+                if (currentInterval) clearInterval(currentInterval);
+                i = 0; // Reset index on each hover
+                
+                currentInterval = setInterval(() => {
+                    let revealedText = '';
+                    for (let j = 0; j < originalText.length; j++) {
+                        if (j < i) {
+                            revealedText += originalText[j];
+                        } else {
+                            revealedText += chars[Math.floor(Math.random() * chars.length)];
+                        }
+                    }
+                    card.textContent = revealedText;
+                    i++;
+                    
+                    if (i > originalText.length) {
+                        clearInterval(currentInterval);
+                        currentInterval = null;
+                    }
+                }, 40);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Check if the decryption is still in progress
+                if (currentInterval) {
+                    clearInterval(currentInterval);
+                    currentInterval = null;
+                }
+                // If the decryption was not complete, reset the text immediately.
+                if (i <= originalText.length) {
+                    card.textContent = originalText;
+                }
+            });
+        });
+
+        // JavaScript for the new dropdown menu
+        const dropdownToggle = document.getElementById('dropdown-toggle');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        dropdownToggle.addEventListener('click', () => {
+            // Toggles the 'dropdown-open' class to trigger the animation
+            dropdownMenu.classList.toggle('dropdown-open');
+        });
+
+        // Close the dropdown if the user clicks outside of it
