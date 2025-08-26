@@ -159,21 +159,21 @@
                 <div class="bg-[#1a1a1a] rounded-lg shadow-md p-6 border-2 border-[#d83d3d] transition-transform transform hover:scale-105 duration-300">
                     <h3 class="text-xl font-semibold mb-2 text-flicker">Case #1: Trusted Reviewer List</h3>
                     <p class="text-gray-400 mb-4 text-sm glitch-text" data-original-text="A vetted list of tech reviewers.">A vetted list of tech reviewers.</p>
-                    <a href="https://docs.google.com/document/d/1XyXyXyXyXyXyXyXyXyXyXyXyXyXyXy/edit" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
+                    <a href="https://docs.google.com/document/d/1hLYzW9wn_CwUULYESH_M7M111kjY6o3SPPO1dP-Ibbo/edit?tab=t.0" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
                 </div>
 
                 <!-- Case File 2 -->
                 <div class="bg-[#1a1a1a] rounded-lg shadow-md p-6 border-2 border-[#d83d3d] transition-transform transform hover:scale-105 duration-300">
                     <h3 class="text-xl font-semibold mb-2 text-flicker">Case #2: Chinesium Keyboards</h3>
                     <p class="text-gray-400 mb-4 text-sm glitch-text" data-original-text="Analysis of low-cost mechanical keyboards.">Analysis of low-cost mechanical keyboards.</p>
-                    <a href="https://docs.google.com/document/d/2ZyZyZyZyZyZyZyZyZyZyZyZyZyZyZ/edit" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
+                    <a href="https://docs.google.com/document/d/1B3MDyurBbViumUZH1i0kON6PSKRvM0ZBFIiQtI6PKTE/edit?usp=sharing" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
                 </div>
 
                 <!-- Case File 3 -->
                 <div class="bg-[#1a1a1a] rounded-lg shadow-md p-6 border-2 border-[#d83d3d] transition-transform transform hover:scale-105 duration-300">
                     <h3 class="text-xl font-semibold mb-2 text-flicker">Case #3: why glorious baddd</h3>
                     <p class="text-gray-400 mb-4 text-sm glitch-text" data-original-text="An analysis of Glorious peripheral flaws.">An analysis of Glorious peripheral flaws.</p>
-                    <a href="https://docs.google.com/document/d/3WyWyWyWyWyWyWyWyWyWyWyWyWyWyW/edit" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
+                    <a href="https://docs.google.com/document/d/1SqNYQWtjCbrVbMYJyRn_sHOeMnqYkRR6EeOpRgZFxr8/edit?usp=sharing" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
                 </div>
 
             </div>
