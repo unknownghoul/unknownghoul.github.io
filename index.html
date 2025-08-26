@@ -173,7 +173,7 @@
                 <div class="bg-[#1a1a1a] rounded-lg shadow-md p-6 border-2 border-[#d83d3d] transition-transform transform hover:scale-105 duration-300">
                     <h3 class="text-xl font-semibold mb-2 text-flicker">Case #3: why glorious baddd</h3>
                     <p class="text-gray-400 mb-4 text-sm glitch-text" data-original-text="An analysis of Glorious peripheral flaws.">An analysis of Glorious peripheral flaws.</p>
-                    <a href="https://docs.google.com/document/d/3WyWyWyWyWyWyWyWyWyWyWyWyWyWyWyW/edit" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
+                    <a href="https://docs.google.com/document/d/3WyWyWyWyWyWyWyWyWyWyWyWyWyWyW/edit" target="_blank" class="text-gray-400 hover:text-white font-medium">View File &rarr;</a>
                 </div>
 
             </div>
@@ -452,3 +452,11 @@
         });
 
         // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', (event) => {
+            if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove('dropdown-open');
+            }
+        });
+    </script>
+</body>
+</html>
